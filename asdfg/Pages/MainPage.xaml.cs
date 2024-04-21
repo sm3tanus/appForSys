@@ -25,12 +25,14 @@ namespace asdfg.Pages
         {
             InitializeComponent();
             List<ClassUniver> list = ClassData.GetDataUni();
-            foreach (ClassUniver univer in list)
-            {
-                MessageBox.Show(univer.ToString());
-            }
             ListUniver.ItemsSource = list.ToList();
            
+        }
+
+        private void ListUniver_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.univer = ListUniver.SelectedItem as ClassUniver;
+            NavigationService.Navigate(new UniverPage());
         }
     }
 }

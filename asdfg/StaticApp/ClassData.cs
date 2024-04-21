@@ -27,12 +27,15 @@ namespace asdfg.StaticApp
             classStatics = new List<ClassStatic>();
             StreamReader reader = new StreamReader(@"base.ioss");
             var SelectData = reader.ReadToEnd();
+            
             foreach (var Index in SelectData.Split(':'))
             {
-                if (Index == ";user" || Index != "")
-                {
-                    classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
-                }
+                
+                    if (Index != "" && Index.Split(';')[3] == "user")
+                    {
+                        
+                        classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
+                }   
             }
             return classStatics;
         }
@@ -45,11 +48,10 @@ namespace asdfg.StaticApp
           
             foreach (var Index in SelectData.Split(':'))
             {
-                
-                if (Index == ";univer" || Index != "")
+
+                if (Index != "" && Index.Split(';')[3] == "univer")
                 {
-                    MessageBox.Show(Index.ToString());
-                    classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
+                    classUni.Add(new ClassUniver(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
                 }
             }
             return classUni;

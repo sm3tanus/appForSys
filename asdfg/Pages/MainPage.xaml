@@ -28,12 +28,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Column="2"
+        <ListView Grid.Column="1"
                   Grid.ColumnSpan="4"
                   Grid.Row="1"
+
                   Grid.RowSpan="6"
                   Margin="10"
-                  x:Name="ListUniver"
+                  x:Name="ListUniver" SelectionChanged="ListUniver_SelectionChanged"
                   >
             <ListView.View>
                 <GridView>
@@ -41,10 +42,10 @@
 
 
                         <GridViewColumn Header="Название"
-                                        Width="80" DisplayMemberBinding="{Binding Name}" >
+                                        Width="250" DisplayMemberBinding="{Binding Name}" >
                         </GridViewColumn>
                         <GridViewColumn Header="Тип"
-                                        Width="70" DisplayMemberBinding="{Binding Cost}">
+                                        Width="250" DisplayMemberBinding="{Binding Cost}">
                         </GridViewColumn>
                       
                     </GridView.Columns>
