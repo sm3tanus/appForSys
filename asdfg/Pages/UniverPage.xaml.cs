@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,25 @@ namespace asdfg.Pages
         {
             InitializeComponent();
             NameUni.Text = App.univer.Name;
-
             CostUni.Text = App.univer.Cost;
             descriptionUni.Text = App.univer.Description;
+            if (App.admin == null)
+            {
+                NameUni.IsReadOnly = true;
+                CostUni.IsReadOnly = true;
+                descriptionUni.IsReadOnly=true;
+                SaveBt.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void SaveBt_Click(object sender, RoutedEventArgs e)
+        {
+            
+            App.univer.Name = NameUni.Text;
+            App.univer.Cost = CostUni.Text;
+            App.univer.Description = descriptionUni.Text;
+            MessageBox.Show("Сохранено успешно");
+            NavigationService.Navigate(new Pages.MainPage());
         }
     }
 }

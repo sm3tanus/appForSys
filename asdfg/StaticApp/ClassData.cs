@@ -22,6 +22,7 @@ namespace asdfg.StaticApp
         
         public static List<ClassStatic> classStatics { get; set; }
         public static List<ClassUniver> classUni { get; set; }
+
         public static List<ClassStatic> GetData()
         {
             classStatics = new List<ClassStatic>();
@@ -31,13 +32,14 @@ namespace asdfg.StaticApp
             foreach (var Index in SelectData.Split(':'))
             {
                 
-                    if (Index != "" && Index.Split(';')[3] == "user")
+                    if (Index != "" && (Index.Split(';')[3] == "user" || Index.Split(';')[3] == "admin"))
                     {
                         
                         classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
-                }   
+                    }   
             }
             return classStatics;
+
         }
 
         public static List<ClassUniver> GetDataUni()
@@ -56,6 +58,8 @@ namespace asdfg.StaticApp
             }
             return classUni;
         }
+
+       
 
     }
 }

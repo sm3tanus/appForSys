@@ -81,7 +81,8 @@
             Grid.Column="2"
                 Grid.Row="3"
                 Height="50"
-                FontSize="33" Click="RegB_Click">Registration</Button>
+                FontSize="33" Click="RegB_Click"
+                Visibility="Visible">Registration</Button>
 
 
     </Grid>

@@ -15,5 +15,6 @@ namespace asdfg
     public partial class App : Application
     {
         public static ClassUniver univer;
+        public static ClassStatic admin;
     }
 }

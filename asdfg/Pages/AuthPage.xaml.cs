@@ -29,31 +29,49 @@ namespace asdfg.Pages
 
         private void EnterB_Click(object sender, RoutedEventArgs e)
         {
-            if (NameTb.Text.Length != 0 && LoginTb.Text.Length !=0 && PasswordTb.Text.Length != 0)
+            if (RegB.Visibility == Visibility.Hidden)
             {
-                StreamWriter sr = new StreamWriter("base.ioss");
-                sr.Write($"\n{NameTb.Text};{LoginTb.Text};{PasswordTb.Text};user:");
-                sr.WriteLine();
-                sr.Close();
-                NavigationService.Navigate(new MainPage());
-            }
-            else if (LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
-            {
-                List<ClassStatic> list = ClassData.GetData();
-                var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
-                if (user != null)
+                if (NameTb.Text.Length != 0 && LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
                 {
+                    using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
+                    using (StreamWriter sr = new StreamWriter(file))
+                    {
+                        sr.WriteLine();
+                        sr.Write($"{NameTb.Text};{LoginTb.Text};{PasswordTb.Text};user:");
+                        sr.Close();
+                    }
                     NavigationService.Navigate(new MainPage());
                 }
                 else
                 {
-                    MessageBox.Show("bye");
+                    MessageBox.Show("Заполните нармална");
                 }
             }
             else
             {
-                MessageBox.Show("Заполните");
+                if (LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
+                {
+                    List<ClassStatic> list = ClassData.GetData();
+                    var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
+                    App.admin = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "admin");
+                    if (user != null || App.admin != null)
+                    {
+                        NavigationService.Navigate(new MainPage());
+                    }
+                    else
+                    {
+                        MessageBox.Show("bye");
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Заполните нармална");
+                }
             }
+
+           
+           
 
         }
 
@@ -61,6 +79,7 @@ namespace asdfg.Pages
         {
             VisName.Visibility = Visibility.Visible;
             NameTb.Visibility = Visibility.Visible;
+            RegB.Visibility = Visibility.Hidden;
         }
     }
 }

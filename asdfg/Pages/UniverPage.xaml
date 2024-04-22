@@ -34,44 +34,51 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="22"></TextBlock>
-        <TextBlock Grid.Column="2"
+        <TextBox Grid.Column="2"
                    Grid.Row="1"
                    Grid.ColumnSpan="3"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    FontSize="14"
+                 Width="400"
                    TextWrapping="Wrap"
-                   Name="NameUni"></TextBlock>
+                   Name="NameUni"></TextBox>
         <TextBlock Grid.Column="1"
                Grid.Row="2"
                Text="Цена: "
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="22"></TextBlock>
-            <TextBlock Grid.Column="2"
+            <TextBox Grid.Column="2"
                Grid.Row="2"
+                     Width="400"
                Grid.ColumnSpan="3"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
                FontSize="14"
                TextWrapping="Wrap"
-               Name="CostUni"></TextBlock>
+               Name="CostUni"></TextBox>
         <TextBlock Grid.Column="1"
                Grid.Row="3"
                Text="Описание: "
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="22"></TextBlock>
-                <TextBlock Grid.Column="2"
+                <TextBox Grid.Column="2"
                Grid.Row="3"
+                         Width="400"
+                         Height="200"
                 Grid.RowSpan="4"
                Grid.ColumnSpan="3"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
                FontSize="14"
                TextWrapping="Wrap"
-               Name="descriptionUni"></TextBlock>
-
+               Name="descriptionUni"></TextBox>
+        <Button Grid.Row="7"
+                Grid.Column="4"
+                Name="SaveBt"
+                Visibility="Visible" Click="SaveBt_Click">Сохранить</Button>
 
     </Grid>
 </Page>
