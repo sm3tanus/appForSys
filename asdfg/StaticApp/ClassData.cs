@@ -28,7 +28,7 @@ namespace asdfg.StaticApp
             classStatics = new List<ClassStatic>();
             StreamReader reader = new StreamReader(@"base.ioss");
             var SelectData = reader.ReadToEnd();
-            
+            reader.Close();
             foreach (var Index in SelectData.Split(':'))
             {
                 
@@ -47,7 +47,7 @@ namespace asdfg.StaticApp
             classUni = new List<ClassUniver>();
             StreamReader reader = new StreamReader(@"base.ioss");
             var SelectData = reader.ReadToEnd();
-          
+          reader.Close();
             foreach (var Index in SelectData.Split(':'))
             {
 
@@ -56,6 +56,7 @@ namespace asdfg.StaticApp
                     classUni.Add(new ClassUniver(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
                 }
             }
+
             return classUni;
         }
 

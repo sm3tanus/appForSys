@@ -31,7 +31,7 @@ namespace asdfg.Pages
         {
             if (RegB.Visibility == Visibility.Hidden)
             {
-                if (NameTb.Text.Length != 0 && LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
+                if (NameTb.Text.Length >= 6 && LoginTb.Text.Length >= 6  && PasswordTb.Text.Length >= 6)
                 {
                     using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
                     using (StreamWriter sr = new StreamWriter(file))
@@ -44,7 +44,7 @@ namespace asdfg.Pages
                 }
                 else
                 {
-                    MessageBox.Show("Заполните нармална");
+                    MessageBox.Show("Имя, логин и пароль должны быть не менее 6 символов!");
                 }
             }
             else
@@ -60,19 +60,15 @@ namespace asdfg.Pages
                     }
                     else
                     {
-                        MessageBox.Show("bye");
+                        MessageBox.Show("Такого пользователя не существует!");
                     }
                     
                 }
                 else
                 {
-                    MessageBox.Show("Заполните нармална");
+                    MessageBox.Show("Заполните все поля!");
                 }
             }
-
-           
-           
-
         }
 
         private void RegB_Click(object sender, RoutedEventArgs e)

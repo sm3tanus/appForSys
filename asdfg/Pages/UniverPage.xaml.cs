@@ -2,23 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace asdfg.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для UniverPage.xaml
-    /// </summary>
     public partial class UniverPage : Page
     {
         public UniverPage()
@@ -31,19 +20,26 @@ namespace asdfg.Pages
             {
                 NameUni.IsReadOnly = true;
                 CostUni.IsReadOnly = true;
-                descriptionUni.IsReadOnly=true;
+                descriptionUni.IsReadOnly = true;
                 SaveBt.Visibility = Visibility.Hidden;
             }
         }
 
         private void SaveBt_Click(object sender, RoutedEventArgs e)
         {
-            
-            App.univer.Name = NameUni.Text;
-            App.univer.Cost = CostUni.Text;
-            App.univer.Description = descriptionUni.Text;
-            MessageBox.Show("Сохранено успешно");
-            NavigationService.Navigate(new Pages.MainPage());
+            string filePath = @"base.ioss";
+            string search = ($"{App.univer.Name};{App.univer.Cost};{App.univer.Description};univer:").Trim();
+            string replace = ($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:").Trim();
+            File.WriteAllLines(filePath, File.ReadAllLines(filePath).Where(v => search == replace));
+            using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+            using (StreamWriter sr = new StreamWriter(file))
+            {
+                sr.Write($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:");
+                sr.Close();
+
+            }
+
         }
+
     }
 }
