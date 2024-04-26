@@ -27,17 +27,14 @@ namespace asdfg.Pages
 
         private void SaveBt_Click(object sender, RoutedEventArgs e)
         {
-            string filePath = @"base.ioss";
-            string search = ($"{App.univer.Name};{App.univer.Cost};{App.univer.Description};univer:").Trim();
-            string replace = ($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:").Trim();
-            File.WriteAllLines(filePath, File.ReadAllLines(filePath).Where(v => search == replace));
-            using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+            File.WriteAllLines(@"base.ioss", File.ReadAllLines(@"base.ioss").Where(i => i.Trim() != $"{App.univer.Name};{App.univer.Cost};{App.univer.Description};univer:".Trim()));
+            using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
             using (StreamWriter sr = new StreamWriter(file))
             {
-                sr.Write($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:");
+                sr.Write($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:".Trim());
                 sr.Close();
-
             }
+            NavigationService.Navigate(new MainPage());
 
         }
 

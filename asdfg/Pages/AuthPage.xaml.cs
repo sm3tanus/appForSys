@@ -22,25 +22,38 @@ namespace asdfg.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        List<ClassStatic> list;
         public AuthPage()
         {
             InitializeComponent();
+
+             list = ClassData.GetData();
         }
 
         private void EnterB_Click(object sender, RoutedEventArgs e)
         {
             if (RegB.Visibility == Visibility.Hidden)
             {
-                if (NameTb.Text.Length >= 6 && LoginTb.Text.Length >= 6  && PasswordTb.Text.Length >= 6)
+                if (NameTb.Text.Length >= 6 && LoginTb.Text.Length >= 6 && PasswordTb.Text.Length >= 6)
                 {
-                    using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
-                    using (StreamWriter sr = new StreamWriter(file))
+                    var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
+                    App.admin = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "admin");
+                    if (list.Find(i => i.Login == user.Login) == null && list.Find(i => i.Login == App.admin.Login) == null)
                     {
-                        sr.WriteLine();
-                        sr.Write($"{NameTb.Text};{LoginTb.Text};{PasswordTb.Text};user:");
-                        sr.Close();
+                        using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
+                        using (StreamWriter sr = new StreamWriter(file))
+                        {
+                            sr.WriteLine();
+                            sr.Write($"{NameTb.Text};{LoginTb.Text};{PasswordTb.Text};user:");
+                            sr.Close();
+                        }
+                        NavigationService.Navigate(new MainPage());
                     }
-                    NavigationService.Navigate(new MainPage());
+                    else
+                    {
+                        MessageBox.Show("Поменяйте логин");
+                    }
+                    
                 }
                 else
                 {
@@ -51,18 +64,17 @@ namespace asdfg.Pages
             {
                 if (LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
                 {
-                    List<ClassStatic> list = ClassData.GetData();
                     var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
                     App.admin = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "admin");
-                    if (user != null || App.admin != null)
-                    {
-                        NavigationService.Navigate(new MainPage());
-                    }
-                    else
-                    {
-                        MessageBox.Show("Такого пользователя не существует!");
-                    }
-                    
+                   
+                        if (user != null || App.admin != null)
+                        {
+                            NavigationService.Navigate(new MainPage());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Такого пользователя не существует!");
+                        }
                 }
                 else
                 {
@@ -70,6 +82,7 @@ namespace asdfg.Pages
                 }
             }
         }
+        
 
         private void RegB_Click(object sender, RoutedEventArgs e)
         {

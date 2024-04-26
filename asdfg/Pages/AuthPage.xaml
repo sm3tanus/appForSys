@@ -29,7 +29,7 @@
                    FontSize="33"
                    Name="VisName"
                    Visibility="Hidden">
-            Name</TextBlock>
+            NickName</TextBlock>
 
         <TextBox x:Name ="NameTb" Grid.Row="0"
                    Grid.Column="2"
