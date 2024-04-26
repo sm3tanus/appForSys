@@ -1,4 +1,4 @@
-﻿<Page x:Class="asdfg.Pages.UniverPage"
+﻿<Page x:Class="asdfg.Pages.ItemInRecycleBinPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:asdfg.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UniverPage">
+      Title="ItemInRecycleBinPage">
 
     <Grid Background="HotPink">
         <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        
         <TextBlock Grid.Column="1"
                    Grid.Row="1"
                    Text="Название: "
@@ -52,7 +52,7 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="22"></TextBlock>
-            <TextBox Grid.Column="2"
+        <TextBox Grid.Column="2"
                Grid.Row="2"
                      Width="400"
                Grid.ColumnSpan="3"
@@ -70,7 +70,7 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="22"></TextBlock>
-                <TextBox Grid.Column="2"
+        <TextBox Grid.Column="2"
                Grid.Row="3"
                          Width="400"
                          Height="200"
@@ -86,11 +86,17 @@
                  BorderBrush="Transparent"></TextBox>
         <Button Grid.Row="7"
                 Grid.Column="4"
-                Name="SaveBt"
-                Visibility="Visible" Click="SaveBt_Click"
+                Name="OrderBt"
                 Background="Black"
                 Foreground="HotPink"
-                 BorderBrush="Transparent">Сохранить</Button>
+                 BorderBrush="Transparent">Заказать</Button>
+
+        <Button Grid.Row="7"
+                Grid.Column="2"
+                Name="DeleteBt"
+                Background="Black"
+                Foreground="HotPink"
+                 BorderBrush="Transparent">Удалить из корзины</Button>
 
         <Button Name="BackBtn"
                 Content="Назад"
@@ -101,6 +107,5 @@
                 Background="Black"
                 Foreground="HotPink"
                  BorderBrush="Transparent" Click="BackBtn_Click"/>
-
     </Grid>
 </Page>

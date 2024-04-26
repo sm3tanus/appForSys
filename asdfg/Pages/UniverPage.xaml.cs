@@ -27,8 +27,8 @@ namespace asdfg.Pages
 
         private void SaveBt_Click(object sender, RoutedEventArgs e)
         {
-            File.WriteAllLines(@"base.ioss", File.ReadAllLines(@"base.ioss").Where(i => i.Trim() != $"{App.univer.Name};{App.univer.Cost};{App.univer.Description};univer:".Trim()));
-            using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
+            File.WriteAllLines(@"service.ioss", File.ReadAllLines(@"service.ioss").Where(i => i.Trim() != $"{App.univer.Name};{App.univer.Cost};{App.univer.Description};univer:".Trim()));
+            using (FileStream file = new FileStream("service.ioss", FileMode.Append, FileAccess.Write))
             using (StreamWriter sr = new StreamWriter(file))
             {
                 sr.Write($"{NameUni.Text};{CostUni.Text};{descriptionUni.Text};univer:".Trim());
@@ -38,5 +38,9 @@ namespace asdfg.Pages
 
         }
 
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
+        }
     }
 }

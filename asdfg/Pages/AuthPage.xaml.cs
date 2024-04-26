@@ -28,6 +28,8 @@ namespace asdfg.Pages
             InitializeComponent();
 
              list = ClassData.GetData();
+          
+            
         }
 
         private void EnterB_Click(object sender, RoutedEventArgs e)
@@ -36,11 +38,11 @@ namespace asdfg.Pages
             {
                 if (NameTb.Text.Length >= 6 && LoginTb.Text.Length >= 6 && PasswordTb.Text.Length >= 6)
                 {
-                    var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
+                    App.user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
                     App.admin = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "admin");
-                    if (list.Find(i => i.Login == user.Login) == null && list.Find(i => i.Login == App.admin.Login) == null)
+                    if (list.Find(i => i.Login == App.user.Login) == null && list.Find(i => i.Login == App.admin.Login) == null)
                     {
-                        using (FileStream file = new FileStream("base.ioss", FileMode.Append, FileAccess.Write))
+                        using (FileStream file = new FileStream("users.ioss", FileMode.Append, FileAccess.Write))
                         using (StreamWriter sr = new StreamWriter(file))
                         {
                             sr.WriteLine();
@@ -53,7 +55,6 @@ namespace asdfg.Pages
                     {
                         MessageBox.Show("Поменяйте логин");
                     }
-                    
                 }
                 else
                 {
@@ -64,10 +65,10 @@ namespace asdfg.Pages
             {
                 if (LoginTb.Text.Length != 0 && PasswordTb.Text.Length != 0)
                 {
-                    var user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
+                    App.user = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "user");
                     App.admin = list.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text && x.ForWho == "admin");
                    
-                        if (user != null || App.admin != null)
+                        if (App.user != null || App.admin != null)
                         {
                             NavigationService.Navigate(new MainPage());
                         }
@@ -89,6 +90,13 @@ namespace asdfg.Pages
             VisName.Visibility = Visibility.Visible;
             NameTb.Visibility = Visibility.Visible;
             RegB.Visibility = Visibility.Hidden;
+
+            BackBtn.Visibility = Visibility.Visible;
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthPage()); 
         }
     }
 }

@@ -11,13 +11,15 @@ namespace asdfg.StaticApp
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string Balance { get; set; }
         public string ForWho { get; set; }
-        public ClassStatic(string name, string login, string password, string forWho)
+        public ClassStatic(string name, string login, string password, string balance, string forWho)
         {
             Name = name;
             Login = login;
             Password = password;
             ForWho = forWho;
+            Balance = balance;
         }
     }
 }

@@ -26,13 +26,39 @@ namespace asdfg.Pages
             InitializeComponent();
             List<ClassUniver> list = ClassData.GetDataUni();
             ListUniver.ItemsSource = list.ToList();
-           
+            if (App.admin != null)
+            {
+                ProfileBtn.Visibility = Visibility.Hidden;
+                RecycleBinBtn.Visibility = Visibility.Hidden;
+                HistoryBtn.Visibility = Visibility.Hidden;
+            }
         }
 
         private void ListUniver_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.univer = ListUniver.SelectedItem as ClassUniver;
             NavigationService.Navigate(new UniverPage());
+        }
+
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProfilePage());
+        }
+
+        private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new HistoryPage());
+        }
+
+        private void RecycleBinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RecycleBinPage());
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new AuthPage());
         }
     }
 }

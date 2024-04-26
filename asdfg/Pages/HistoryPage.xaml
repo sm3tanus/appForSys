@@ -1,4 +1,4 @@
-﻿<Page x:Class="asdfg.Pages.MainPage"
+﻿<Page x:Class="asdfg.Pages.HistoryPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:asdfg.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Title="HistoryPage">
 
     <Grid Background="HotPink">
         <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
                   BorderBrush="Transparent"
                   Grid.RowSpan="6"
                   Margin="10"
-                  x:Name="ListUniver" SelectionChanged="ListUniver_SelectionChanged"
+                  x:Name="ListUniver"
                   >
             <ListView.View>
                 <GridView>
@@ -49,41 +49,11 @@
                         <GridViewColumn Header="Тип"
                                         Width="250" DisplayMemberBinding="{Binding Cost}">
                         </GridViewColumn>
-                      
+
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <Button Name="ProfileBtn"
-                Grid.Column="5"
-                Width="70"
-                Height="40"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Right"
-                Content="Профиль"
-                
-                BorderBrush="Transparent"
-                Background="Black"
-                Foreground="HotPink" Click="ProfileBtn_Click"/>
-
-        <Button Name="RecycleBinBtn"
-                Grid.Column="0"
-                Grid.Row="2"
-                Height="40"
-                Content="Корзина"
-                BorderBrush="Transparent"
-                Background="Black"
-                Foreground="HotPink" Click="RecycleBinBtn_Click"/>
-
-        <Button Name="HistoryBtn"
-                Grid.Column="0"
-                Grid.Row="3"
-                Height="40"
-                BorderBrush="Transparent"
-                Content="История заказов"
-                Background="Black"
-                Foreground="HotPink" Click="HistoryBtn_Click"/>
 
         <Button Name="BackBtn"
                 Content="Назад"
@@ -94,6 +64,5 @@
                 Background="Black"
                 Foreground="HotPink"
                  BorderBrush="Transparent" Click="BackBtn_Click"/>
-
     </Grid>
 </Page>

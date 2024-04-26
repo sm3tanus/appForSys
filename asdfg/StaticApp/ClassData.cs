@@ -26,16 +26,16 @@ namespace asdfg.StaticApp
         public static List<ClassStatic> GetData()
         {
             classStatics = new List<ClassStatic>();
-            StreamReader reader = new StreamReader(@"base.ioss");
+            StreamReader reader = new StreamReader(@"users.ioss");
             var SelectData = reader.ReadToEnd();
             reader.Close();
             foreach (var Index in SelectData.Split(':'))
             {
                 
-                    if (Index != "" && (Index.Split(';')[3] == "user" || Index.Split(';')[3] == "admin"))
+                    if (Index != "" && (Index.Split(';')[4] == "user" || Index.Split(';')[4] == "admin"))
                     {
                         
-                        classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3]));
+                        classStatics.Add(new ClassStatic(Index.Split(';')[0], Index.Split(';')[1], Index.Split(';')[2], Index.Split(';')[3], Index.Split(';')[4]));
                     }   
             }
             return classStatics;
@@ -45,7 +45,7 @@ namespace asdfg.StaticApp
         public static List<ClassUniver> GetDataUni()
         {
             classUni = new List<ClassUniver>();
-            StreamReader reader = new StreamReader(@"base.ioss");
+            StreamReader reader = new StreamReader(@"service.ioss");
             var SelectData = reader.ReadToEnd();
           reader.Close();
             foreach (var Index in SelectData.Split(':'))

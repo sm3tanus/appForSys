@@ -16,5 +16,6 @@ namespace asdfg
     {
         public static ClassUniver univer;
         public static ClassStatic admin;
+        public static ClassStatic user;
     }
 }

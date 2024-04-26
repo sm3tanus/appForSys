@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
 
-    <Grid Background="Bisque">
+    <Grid Background="HotPink">
         
         <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -29,20 +29,105 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-        <TextBlock Name="LoginTB"
-                   Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="1"
-                   Grid.ColumnSpan="2"
-                   VerticalAlignment="Center"
-                   Text="Login: 1212221"
-                   FontSize="25"/>
-        
-        <TextBlock Name="NickNameTB"
-                   Grid.Column="3"
-                   Grid.Row="1"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="1"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   Text="NickName"/>
+                   Text="Login:"
+                   Margin="0 0 15 0"
+                   FontSize="25"/>
+        
+        <TextBlock Name="LoginTB"
+                   Grid.Column="2"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                  
+                   Margin="10 0 0 0"
+                   FontSize="14"/>
+
+        <TextBlock Grid.Column="3"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Text="NickName:"
+                   Margin="0 0 10 0"
+                   FontSize="25"/>
+
+        <TextBlock Name="NickNameTB"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+               
+                   Margin="10 0 0 0"
+                   FontSize="14" />
+
+
+        <TextBlock Grid.Column="2"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Text="Balance:"
+                   FontSize="25" />
+
+        <TextBlock Name="BalanceTB"
+                   Grid.Column="3"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                  
+                   FontSize="14" />
+
+        <Button Grid.Column="2"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Height="40"
+                Content="Добавить 500Р"
+                Background="Black"
+                Name="Add500"
+                Foreground="HotPink"
+                 BorderBrush="Transparent"/>
+        
+        <Button Grid.Column="0"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Height="40"
+                Content="Добавить 100Р"
+                Background="Black"
+                Foreground="HotPink"
+                Name="Add100"
+                 BorderBrush="Transparent" Click="Add100_Click"/>
+
+        <Button Grid.Column="4"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Name="Add1000"
+                Height="40"
+                Content="Добавить 1000Р"
+                Background="Black"
+                Foreground="HotPink"
+                 BorderBrush="Transparent"/>
+        
+        <Button Name="BackBtn"
+                Content="Назад"
+                Width="100"
+                Height="40"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Background="Black"
+                Foreground="HotPink"
+                 BorderBrush="Transparent" Click="BackBtn_Click"/>
+
     </Grid>
+          
 </Page>
